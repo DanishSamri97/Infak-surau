@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infak Penapis Air & Udara – Surau Al-Ghufraniah</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:0; }
+    .container { max-width:600px; margin:auto; background:#fff; padding:16px; }
+    h1, h2 { text-align:center; }
+    .box { border:1px solid #ddd; padding:12px; margin:12px 0; }
+    .label { font-weight:bold; }
+    .footer { font-size:14px; text-align:center; color:#555; margin-top:20px; }
+    .admin { background:#eef; padding:12px; margin-top:20px; }
+    input { width:100%; padding:8px; margin:6px 0; font-size:16px; }
+    button { padding:10px; width:100%; font-size:16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Infak Penapis Air & Udara</h1>
+    <h2>Surau Al-Ghufraniah</h2>
+
+    <div class="box">
+      <p>Infak ini bertujuan untuk pembelian dan pemasangan <b>penapis air</b> dan <b>penapis udara</b> demi keselesaan dan kesihatan jemaah.</p>
+    </div>
+
+    <div class="box">
+      <h3>Status Kewangan</h3>
+      <p><span class="label">Jumlah Kutipan:</span> RM <span id="kutipan">0</span></p>
+      <p><span class="label">Jumlah Digunakan:</span> RM <span id="guna">0</span></p>
+      <p><span class="label">Baki Semasa:</span> RM <span id="baki">0</span></p>
+      <p><i>Kemas kini terakhir: <span id="tarikh">-</span></i></p>
+    </div>
+
+    <div class="box">
+      <p>Setiap sumbangan direkodkan dan digunakan dengan penuh amanah. Gambar resit dan pemasangan akan dikongsi.</p>
+    </div>
+
+    <div class="admin">
+      <h3>Admin (Untuk Pengurus Sahaja)</h3>
+      <input type="number" id="adminKutipan" placeholder="Jumlah Kutipan (RM)" />
+      <input type="number" id="adminGuna" placeholder="Jumlah Digunakan (RM)" />
+      <button onclick="updateData()">Kemaskini Status</button>
+    </div>
+
+    <div class="footer">
+      Terima kasih atas infak tuan/puan. Semoga menjadi amal jariah.
+    </div>
+  </div>
+
+  <script>
+    function updateData() {
+      const kutipan = document.getElementById('adminKutipan').value || 0;
+      const guna = document.getElementById('adminGuna').value || 0;
+      const baki = kutipan - guna;
+
+      document.getElementById('kutipan').innerText = kutipan;
+      document.getElementById('guna').innerText = guna;
+      document.getElementById('baki').innerText = baki;
+      document.getElementById('tarikh').innerText = new Date().toLocaleString('ms-MY');
+    }
+  </script>
+</body>
+</html>
